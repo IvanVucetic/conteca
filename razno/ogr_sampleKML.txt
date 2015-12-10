@@ -1,0 +1,1 @@
+ogr2ogr -f KML sampleimage.kml PG:"host=localhost dbname=vuceta user=vuceta password=q" -sql "select * from official_meta_full where sceneid= 'LC81390452014295LGN00'"

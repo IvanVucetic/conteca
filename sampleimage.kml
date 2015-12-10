@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="sql_statement" id="sql_statement">
+	<SimpleField name="recordid" type="int"></SimpleField>
+	<SimpleField name="sceneid" type="string"></SimpleField>
+	<SimpleField name="sensor" type="string"></SimpleField>
+	<SimpleField name="acquisitiondate" type="string"></SimpleField>
+	<SimpleField name="path" type="int"></SimpleField>
+	<SimpleField name="row" type="int"></SimpleField>
+	<SimpleField name="upperleftcornerlatitude" type="float"></SimpleField>
+	<SimpleField name="upperleftcornerlongitude" type="float"></SimpleField>
+	<SimpleField name="upperrightcornerlatitude" type="float"></SimpleField>
+	<SimpleField name="upperrightcornerlongitude" type="float"></SimpleField>
+	<SimpleField name="lowerleftcornerlatitude" type="float"></SimpleField>
+	<SimpleField name="lowerleftcornerlongitude" type="float"></SimpleField>
+	<SimpleField name="lowerrightcornerlatitude" type="float"></SimpleField>
+	<SimpleField name="lowerrightcornerlongitude" type="float"></SimpleField>
+	<SimpleField name="cloudcover" type="float"></SimpleField>
+	<SimpleField name="data_type_l1" type="string"></SimpleField>
+</Schema>
+<Folder><name>sql_statement</name>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#sql_statement">
+		<SimpleData name="recordid">71</SimpleData>
+		<SimpleData name="sceneid">LC81270222015342LGN00</SimpleData>
+		<SimpleData name="sensor">OLI_TIRS</SimpleData>
+		<SimpleData name="acquisitiondate">2015/12/08</SimpleData>
+		<SimpleData name="path">127</SimpleData>
+		<SimpleData name="row">22</SimpleData>
+		<SimpleData name="upperleftcornerlatitude">55.5889</SimpleData>
+		<SimpleData name="upperleftcornerlongitude">115.12046</SimpleData>
+		<SimpleData name="upperrightcornerlatitude">55.09678</SimpleData>
+		<SimpleData name="upperrightcornerlongitude">118.01697</SimpleData>
+		<SimpleData name="lowerleftcornerlatitude">53.89196</SimpleData>
+		<SimpleData name="lowerleftcornerlongitude">114.32176</SimpleData>
+		<SimpleData name="lowerrightcornerlatitude">53.41057</SimpleData>
+		<SimpleData name="lowerrightcornerlongitude">117.10592</SimpleData>
+		<SimpleData name="cloudcover">4</SimpleData>
+		<SimpleData name="data_type_l1">L1GT</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>115.12046,55.5889 118.01697,55.09678 117.10592,53.41057 114.32176,53.89196 115.12046,55.5889</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+</Folder>
+</Document></kml>
