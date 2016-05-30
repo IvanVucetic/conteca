@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+	<head>
+		<style>
+			#map {
+				width: 80%;
+				height: 600px;
+				background-color: #ccc;
+				float: left;
+			}
+			button {
+				float: right;
+			}
+		</style>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<div id="map"></div>
+		<div>
+        <button id="delete-button">Delete Selected Shape</button>
+		</div>
+
+		<script>
+			// var u kojoj drzimo nacrtani poligon
+			var newShape;
+
+			function deleteSelectedShape() {
+				newShape.setMap(null);		//izbrisani poligon i dalje ostaje u selectedShape. Testirati da li moze i nakon brisanja da pravi problem jer je prisutan; moguce resenje selectedShape = null
+				// Show drawing tools again:
+				drawingManager.setOptions({
+					drawingControl: true
+			 	});
+			}
+
+			function initMap() {
+				var mapDiv = document.getElementById('map');
+				var mapProp = {
+					center:new google.maps.LatLng(44.508742,20.120850),
+					zoom:5,
+					mapTypeId:google.maps.MapTypeId.TERRAIN
+				};
+				var map = new google.maps.Map(mapDiv, mapProp);
+
+				drawingManager = new google.maps.drawing.DrawingManager({
+					drawingMode: google.maps.drawing.OverlayType.POLYGON, //Specifies that the DrawingManager creates polygons, and that the overlay given in the overlaycomplete event is a polygon.
+					drawingControl: true,
+					drawingControlOptions: {
+						position: google.maps.ControlPosition.TOP_CENTER,
+						drawingModes: [
+							google.maps.drawing.OverlayType.POLYGON
+						]
+					},
+				});
+				drawingManager.setMap(map);
+
+				google.maps.event.addListener(drawingManager, 'overlaycomplete', function(e) {	//must be overlay, can't be polygon
+						// Switch back to non-drawing mode after drawing a shape, so only one polygon is drawn.
+						drawingManager.setDrawingMode(null);
+						// To hide drawing tools:
+						drawingManager.setOptions({
+							drawingControl: false
+						});
+						// Selects the newly-drawn shape so it can be deleted or ...
+						newShape = e.overlay; //newShape je Polygon class
+						newShape.setEditable(true);
+						// MORAJU iz overlaya koordinate
+						var coordinatesArray = newShape.getPath().getArray();
+						alert(coordinatesArray);
+				});
+
+        google.maps.event.addDomListener(document.getElementById('delete-button'), 'click', deleteSelectedShape);
+			}; // zatvara initMap
+
+
+		</script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCplICGU5x9b0HRZhHayVFH6ypZBKfqsVs&callback=initMap&libraries=drawing"
+			async defer></script>
+	</body>
+</html>
